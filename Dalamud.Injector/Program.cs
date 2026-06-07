@@ -366,7 +366,7 @@ namespace Dalamud.Injector
             }
 
             var appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var xivlauncherDir = Path.Combine(appDataDir, "XIVLauncher");
+            var xivlauncherDir = Path.Combine(appDataDir, "XIVLauncherKR");
 
             workingDirectory ??= Directory.GetCurrentDirectory();
             configurationPath ??= Path.Combine(xivlauncherDir, "dalamudConfig.json");
@@ -401,6 +401,10 @@ namespace Dalamud.Injector
             else if (languageStr[0..(len = Math.Min(languageStr.Length, (key = "français").Length))] == key[0..len])
             {
                 clientLanguage = ClientLanguage.French;
+            }
+            else if (languageStr[0..(len = Math.Min(languageStr.Length, (key = "korean").Length))] == key[0..len])
+            {
+                clientLanguage = ClientLanguage.Korean;
             }
             else if (int.TryParse(languageStr, out var languageInt) && Enum.IsDefined((ClientLanguage)languageInt))
             {
